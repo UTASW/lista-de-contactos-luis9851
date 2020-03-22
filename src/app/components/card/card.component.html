@@ -1,0 +1,47 @@
+<div *ngIf="miservice.arrPersonas.length!==0">
+  <ion-card *ngFor="let item of miservice.arrPersonas" [ngClass]="{'rosa':item.sex == 'Femenino','azul':item.sex=='Masculino'}">
+    <div>
+
+      <ion-card-header>
+        
+        <div>
+          <ion-icon name="person-circle-outline"></ion-icon>
+          <ion-label style="color:black; font-size:20px;">{{item.nombre}}</ion-label>
+        </div>
+
+        <div>
+          <ion-icon name="phone-portrait-outline"></ion-icon>
+          <ion-label style="color:black; font-size:20px;">{{item.telefono}}</ion-label>
+        </div>
+
+        <div>  
+          <ion-icon name="mail-outline"></ion-icon>
+          <ion-label style="color:black; font-size:20px;">{{item.email}}</ion-label>
+        </div>
+
+        <div>  
+          <ion-icon name="calendar-outline"></ion-icon>
+          <ion-label style="color:black; font-size:20px;">Nacido en: {{item.fecha|date}}</ion-label>
+        </div>
+
+        <div *ngIf="miservice.nota_v===true">
+          <div>
+            <ion-icon name="book-outline"></ion-icon>
+            <ion-label style="color:black; font-size:20px;">{{item.nota}}</ion-label>
+          </div>
+        </div>
+
+        <div style="text-align: right;">
+          <ion-button color="danger" (click)="miservice.delete(item)">
+            <ion-icon name="close-outline"></ion-icon>
+          </ion-button>
+        </div>
+
+      </ion-card-header>
+
+    </div>
+  </ion-card>
+</div>
+<div *ngIf="miservice.arrPersonas.length===0">
+  <h2 id="titulo">No se han agregado contactos</h2>
+</div>
